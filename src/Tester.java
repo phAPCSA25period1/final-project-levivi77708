@@ -1,4 +1,12 @@
-public class Main {
+/**
+ * Tester class for the Hike class.
+ * Creates sample Hike objects and tests their toString() method.
+ */
+public class Tester {
+    /**
+     * Main method to run tests on Hike objects.
+     * @param args command-line arguments (not used)
+     */
     public static void main(String[] args)
     {
         // create Hike objects manually
