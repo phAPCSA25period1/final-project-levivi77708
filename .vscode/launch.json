@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Tester",
+      "request": "launch",
+      "mainClass": "Tester",
+      "projectName": "final-project-levivi77708_cd2e78f1"
+    },
+    {
+      "type": "java",
       "name": "Main",
       "request": "launch",
       "mainClass": "Main",

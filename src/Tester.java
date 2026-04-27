@@ -14,10 +14,14 @@ public class Tester {
         Hike hike2 = new Hike("Cowles Mountain", 5.0, "04/11/2026");
         Hike hike3 = new Hike("Sunset Cliffs Walk", 2.0, "04/12/2026");
 
+        Hiker hiker = new Hiker("Vivi", 17);
+
         // print them to test toString()
-        System.out.println(hike1);
-        System.out.println(hike2);
-        System.out.println(hike3);
+        hiker.addHike(hike1);
+        hiker.addHike(hike2);
+        hiker.addHike(hike3);
+
+        System.out.println("Total Miles: " + hiker.getTotalMiles());
 
     }
 
