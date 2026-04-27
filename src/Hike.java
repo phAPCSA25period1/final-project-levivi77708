@@ -1,20 +1,17 @@
-
 /**
- * Represents a hiking trip with details about the hike name, distance, and date.
+ * Represents a single hiking trip with a name, distance, and date.
  */
-public class Hike {
-
-    // instant variables
-    /** The name of the hike */
-    /** The name of the hike */
+public class Hike
+{
+    /** The name of the hike. */
     private String hikeName;
-    /** The distance of the hike in miles */
+    /** The number of miles completed on the hike. */
     private double numMiles;
-    /** The date the hike took place */
+    /** The date when the hike occurred. */
     private String date;
 
     /**
-     * Constructs a Hike object with the specified details.
+     * Constructs a Hike using the provided details.
      * @param name the name of the hike
      * @param miles the distance of the hike in miles
      * @param hikeDate the date the hike took place
@@ -26,10 +23,9 @@ public class Hike {
         date = hikeDate;
     }
 
-    // Getters
     /**
-     * Returns the name of the hike.
-     * @return the hike name
+     * Returns the hike name.
+     * @return the name of the hike
      */
     public String getHikeName()
     {
@@ -37,8 +33,8 @@ public class Hike {
     }
 
     /**
-     * Returns the distance of the hike in miles.
-     * @return the number of miles
+     * Returns the number of miles for the hike.
+     * @return the hike distance in miles
      */
     public double getNumMiles()
     {
@@ -46,7 +42,7 @@ public class Hike {
     }
 
     /**
-     * Returns the date the hike took place.
+     * Returns the date of the hike.
      * @return the hike date
      */
     public String getDate()
@@ -55,15 +51,12 @@ public class Hike {
     }
 
     /**
-     * Returns a string representation of the hike.
-     * @return a formatted string with hike details
+     * Returns a formatted string representing this hike.
+     * @return a string with hike details
      */
     @Override
     public String toString()
     {
-        return "Hike: " + hikeName +
-                ", Miles: " + numMiles +
-               ", Date: " + date;
+        return "Hike: " + hikeName + ", Miles: " + numMiles + ", Date: " + date;
     }
-
-    }
+}
