@@ -9,6 +9,8 @@ public class Hike
     private double numMiles;
     /** The date when the hike occurred. */
     private String date;
+    /** favorite hike */
+    private String favoriteHike;
 
     /**
      * Constructs a Hike using the provided details.

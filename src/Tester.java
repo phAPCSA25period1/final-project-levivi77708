@@ -19,10 +19,14 @@ public class Tester
         hiker.addHike(hike2);
         hiker.addHike(hike3);
 
+
+
         System.out.println("Hikes:");
         hiker.printHikes();
 
         System.out.println();
         System.out.println("Total Miles: " + hiker.getTotalMiles());
+
+
     }
 }
