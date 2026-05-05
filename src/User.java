@@ -1,8 +1,7 @@
 import java.util.Scanner;
 
 /**
- * Handles user interaction for the hiking tracker application.
- * It reads user input, creates a Hiker profile, and allows adding or viewing hikes.
+ * Handles user input and menu options for the hiking tracker.
  */
 public class User
 {
@@ -31,19 +30,21 @@ public class User
     }
 
     /**
-     * Starts the main user menu loop and processes user choices.
+     * Starts the menu loop for the program.
      */
     public void start()
     {
         int choice = 0;
 
-        while (choice != 3)
+        while (choice != 5)
         {
             System.out.println();
             System.out.println("Menu:");
             System.out.println("1. Add a hike");
             System.out.println("2. View all hikes");
-            System.out.println("3. Quit");
+            System.out.println("3. View total miles");
+            System.out.println("4. Check weekly goal");
+            System.out.println("5. Quit");
             System.out.print("Enter your choice: ");
 
             choice = input.nextInt();
@@ -59,6 +60,14 @@ public class User
             }
             else if (choice == 3)
             {
+                System.out.println("Total miles this week: " + hiker.getTotalMiles());
+            }
+            else if (choice == 4)
+            {
+                System.out.println(hiker.getWeeklyGoalFeedback());
+            }
+            else if (choice == 5)
+            {
                 System.out.println("Goodbye!");
             }
             else
@@ -66,6 +75,8 @@ public class User
                 System.out.println("Invalid choice.");
             }
         }
+
+        input.close();
     }
 
     /**

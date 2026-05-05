@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * Stores information about a hiker and the collection of hikes they have completed.
+ * Represents a hiker with a name, age, and list of hikes.
  */
 public class Hiker
 {
@@ -25,8 +25,9 @@ public class Hiker
     }
 
     /**
-     * Adds a hike to this hiker's record.
-     * @param h the hike to add
+     * Adds a hike to the hiker's list.
+     *
+     * @param h the hike being added
      */
     public void addHike(Hike h)
     {
@@ -34,8 +35,9 @@ public class Hiker
     }
 
     /**
-     * Computes the total miles from all recorded hikes.
-     * @return the total miles hiked
+     * Calculates the total miles from all hikes.
+     *
+     * @return the total number of miles
      */
     public double getTotalMiles()
     {
@@ -50,13 +52,64 @@ public class Hiker
     }
 
     /**
-     * Prints each hike in the hiker's record.
+     * Prints all hikes in the hiker's list.
      */
     public void printHikes()
     {
-        for (int i = 0; i < hikes.size(); i++)
+        if (hikes.size() == 0)
         {
-            System.out.println(hikes.get(i));
+            System.out.println("No hikes have been added yet.");
+        }
+        else
+        {
+            for (int i = 0; i < hikes.size(); i++)
+            {
+                System.out.println(hikes.get(i));
+            }
+        }
+    }
+
+    /**
+     * Checks if the hiker met a weekly hiking/walking goal based on age.
+     *
+     * @return feedback about whether the weekly goal was met
+     */
+    public String getWeeklyGoalFeedback()
+    {
+        double totalMiles = getTotalMiles();
+
+        if (age < 18)
+        {
+            if (totalMiles >= 6)
+            {
+                return "You met your weekly goal. This is a healthy amount of hiking/walking for your age.";
+            }
+            else
+            {
+                return "You did not meet your weekly goal yet. Try to reach at least 6 miles this week.";
+            }
+        }
+        else if (age <= 40)
+        {
+            if (totalMiles >= 8)
+            {
+                return "You met your weekly goal. This is a healthy amount of hiking/walking for your age.";
+            }
+            else
+            {
+                return "You did not meet your weekly goal yet. Try to reach at least 8 miles this week.";
+            }
+        }
+        else
+        {
+            if (totalMiles >= 5)
+            {
+                return "You met your weekly goal. This is a healthy amount of hiking/walking for your age.";
+            }
+            else
+            {
+                return "You did not meet your weekly goal yet. Try to reach at least 5 miles this week.";
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 /**
- * Represents a single hiking trip with a name, distance, and date.
+ * Represents one hike with a name, number of miles, and date.
  */
 public class Hike
 {
@@ -14,6 +14,7 @@ public class Hike
 
     /**
      * Constructs a Hike using the provided details.
+     *
      * @param name the name of the hike
      * @param miles the distance of the hike in miles
      * @param hikeDate the date the hike took place
