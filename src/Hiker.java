@@ -1,27 +1,25 @@
 import java.util.ArrayList;
 
 /**
- * Represents a hiker with a name, age, and list of hikes.
+ * Represents a hiker with a name, age, list of hikes, and favorite hikes.
  */
-public class Hiker
-{
-    /** The hiker's name. */
+public class Hiker {
     private String name;
-    /** The hiker's age. */
     private int age;
-    /** The list of hikes completed by the hiker. */
     private ArrayList<Hike> hikes;
+    private ArrayList<Hike> favoriteHikes;
 
     /**
-     * Constructs a Hiker with a name and age.
+     * Creates a Hiker object.
+     *
      * @param n the hiker's name
      * @param a the hiker's age
      */
-    public Hiker(String n, int a)
-    {
+    public Hiker(String n, int a) {
         name = n;
         age = a;
         hikes = new ArrayList<Hike>();
+        favoriteHikes = new ArrayList<Hike>();
     }
 
     /**
@@ -29,22 +27,28 @@ public class Hiker
      *
      * @param h the hike being added
      */
-    public void addHike(Hike h)
-    {
+    public void addHike(Hike h) {
         hikes.add(h);
     }
 
     /**
-     * Calculates the total miles from all hikes.
+     * Adds a hike to the favorite hikes list.
      *
-     * @return the total number of miles
+     * @param h the hike being added to favorites
      */
-    public double getTotalMiles()
-    {
+    public void addFavoriteHike(Hike h) {
+        favoriteHikes.add(h);
+    }
+
+    /**
+     * Calculates total miles from all hikes.
+     *
+     * @return total miles walked
+     */
+    public double getTotalMiles() {
         double total = 0.0;
 
-        for (int i = 0; i < hikes.size(); i++)
-        {
+        for (int i = 0; i < hikes.size(); i++) {
             total += hikes.get(i).getNumMiles();
         }
 
@@ -52,64 +56,61 @@ public class Hiker
     }
 
     /**
-     * Prints all hikes in the hiker's list.
+     * Prints all hikes.
      */
-    public void printHikes()
-    {
-        if (hikes.size() == 0)
-        {
+    public void printHikes() {
+        if (hikes.size() == 0) {
             System.out.println("No hikes have been added yet.");
-        }
-        else
-        {
-            for (int i = 0; i < hikes.size(); i++)
-            {
+        } else {
+            for (int i = 0; i < hikes.size(); i++) {
                 System.out.println(hikes.get(i));
             }
         }
     }
 
     /**
-     * Checks if the hiker met a weekly hiking/walking goal based on age.
-     *
-     * @return feedback about whether the weekly goal was met
+     * Prints all favorite hikes.
      */
-    public String getWeeklyGoalFeedback()
-    {
-        double totalMiles = getTotalMiles();
+    public void printFavoriteHikes() {
+        if (favoriteHikes.size() == 0) {
+            System.out.println("No favorite hikes have been added yet.");
+        } else {
+            for (int i = 0; i < favoriteHikes.size(); i++) {
+                System.out.println(favoriteHikes.get(i));
+            }
+        }
+    }
 
-        if (age < 18)
-        {
-            if (totalMiles >= 6)
-            {
-                return "You met your weekly goal. This is a healthy amount of hiking/walking for your age.";
-            }
-            else
-            {
-                return "You did not meet your weekly goal yet. Try to reach at least 6 miles this week.";
-            }
+    /**
+     * Determines the weekly mileage goal based on age.
+     *
+     * @return the weekly goal in miles
+     */
+    public double getWeeklyGoal() {
+        if (age < 18) {
+            return 6.0;
+        } else if (age <= 40) {
+            return 8.0;
+        } else {
+            return 5.0;
         }
-        else if (age <= 40)
-        {
-            if (totalMiles >= 8)
-            {
-                return "You met your weekly goal. This is a healthy amount of hiking/walking for your age.";
-            }
-            else
-            {
-                return "You did not meet your weekly goal yet. Try to reach at least 8 miles this week.";
-            }
-        }
-        else
-        {
-            if (totalMiles >= 5)
-            {
-                return "You met your weekly goal. This is a healthy amount of hiking/walking for your age.";
-            }
-            else
-            {
-                return "You did not meet your weekly goal yet. Try to reach at least 5 miles this week.";
-            }
+    }
+
+    /**
+     * Provides feedback on whether the user met their goal.
+     *
+     * @return feedback message
+     */
+    public String getWeeklyGoalFeedback() {
+        double totalMiles = getTotalMiles();
+        double goal = getWeeklyGoal();
+
+        if (totalMiles >= goal) {
+            return "Your weekly goal is " + goal + " miles. You met your goal!";
+        } else {
+            return "Your weekly goal is " + goal + " miles. You have walked "
+                    + totalMiles + " miles and need "
+                    + (goal - totalMiles) + " more miles.";
         }
     }
 }
