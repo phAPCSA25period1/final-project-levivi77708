@@ -8,7 +8,8 @@ public class User {
     private Hiker hiker;
 
     /**
-     * Creates a User and initializes the program.
+     * Constructs a User and initializes the hiking tracker.
+     * Prompts for the user's name and age, then creates a Hiker object.
      */
     public User() {
         input = new Scanner(System.in);
@@ -29,12 +30,13 @@ public class User {
     }
 
     /**
-     * Starts the menu loop.
+     * Starts the interactive menu system for the hiking tracker.
+     * Displays menu options and processes user selections until exit.
      */
     public void start() {
         int choice = 0;
 
-        while (choice != 6) {
+        while (choice != 8) {
             System.out.println();
             System.out.println("Menu:");
             System.out.println("1. Add a hike");
@@ -42,7 +44,9 @@ public class User {
             System.out.println("3. View total miles");
             System.out.println("4. Check weekly goal");
             System.out.println("5. View favorite hikes");
-            System.out.println("6. Quit");
+            System.out.println("6. View goal progress");
+            System.out.println("7. Remove a hike");
+            System.out.println("8. Quit");
             System.out.print("Enter your choice: ");
 
             choice = input.nextInt();
@@ -59,6 +63,11 @@ public class User {
             } else if (choice == 5) {
                 viewFavoriteHikes();
             } else if (choice == 6) {
+                System.out.println("You are " + hiker.getGoalPercentage()
+                        + "% of the way to your weekly goal.");
+            } else if (choice == 7) {
+                removeHike();
+            } else if (choice == 8) {
                 System.out.println("Goodbye!");
             } else {
                 System.out.println("Invalid choice.");
@@ -69,7 +78,9 @@ public class User {
     }
 
     /**
-     * Adds a new hike from user input and asks if it should be favorited.
+     * Prompts the user to enter hike details and adds a new hike to the hiker's
+     * list.
+     * Allows the user to optionally add the hike to their favorites.
      */
     private void addHike() {
         System.out.print("Enter hike name: ");
@@ -97,7 +108,7 @@ public class User {
     }
 
     /**
-     * Displays all hikes.
+     * Displays all hikes in the hiker's list.
      */
     private void viewHikes() {
         System.out.println("Your hikes:");
@@ -105,10 +116,29 @@ public class User {
     }
 
     /**
-     * Displays favorite hikes.
+     * Displays all favorite hikes in the hiker's list.
      */
     private void viewFavoriteHikes() {
         System.out.println("Your favorite hikes:");
         hiker.printFavoriteHikes();
+    }
+
+    /**
+     * Prompts the user to select and remove a hike from their list.
+     * Displays all hikes and asks for the number of the hike to remove.
+     */
+    private void removeHike() {
+        System.out.println("Choose a hike to remove:");
+        hiker.printHikes();
+
+        System.out.print("Enter the hike number: ");
+        int number = input.nextInt();
+        input.nextLine();
+
+        if (hiker.removeHike(number)) {
+            System.out.println("Hike removed.");
+        } else {
+            System.out.println("Invalid hike number.");
+        }
     }
 }
